@@ -2,32 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lab 9 with TrackJS</title>
+  <title>Lab 9 with TrackJS (fixed)</title>
 
-  <!-- ─── TRACKJS INSTALL SNIPPET ───────────────────────────────────────────────── -->
+  <!-- ─── Step 1: Install TrackJS in the <head> before any of your own scripts ── -->
   <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
   <script>
-    window.TrackJS && TrackJS.install({
-      token: "a212cc85cd70406aac90137e7984bdf9"
-      // You can add more configuration options here if desired:
-      // https://docs.trackjs.com
-    });
+    window.TrackJS &&
+      TrackJS.install({
+        token: "a212cc85cd70406aac90137e7984bdf9"
+        // …you can add more options here if you want…
+      });
   </script>
-  <!-- ─────────────────────────────────────────────────────────────────────────────── -->
 
   <style>
-    button {
-      margin: 3px;
-    }
-    button:hover {
-      cursor: pointer;
-    }
-    #first-num,
-    #second-num {
-      width: 60px;
-    }
+    button { margin: 3px; }
+    button:hover { cursor: pointer; }
+    #first-num, #second-num { width: 60px; }
     output {
       border: 1px solid gray;
       display: block;
@@ -36,9 +26,7 @@
       padding: 5px;
       width: 240px;
     }
-    main {
-      width: 800px;
-    }
+    main { width: 800px; }
     #error-btns {
       column-gap: 5px;
       display: flex;
@@ -96,118 +84,118 @@
     // ─── STEP 2: CONSOLE DEMO BUTTONS ────────────────────────────────────────────────
     //
 
-    let form = document.querySelector('form');
-    form.addEventListener('submit', e => {
+    let form = document.querySelector("form");
+    form.addEventListener("submit", e => {
       e.preventDefault();
-      let output = document.querySelector('output');
-      let firstNum = document.querySelector('#first-num').value;
-      let secondNum = document.querySelector('#second-num').value;
-      let operator = document.querySelector('#operator').value;
+      let output = document.querySelector("output");
+      let firstNum = document.querySelector("#first-num").value;
+      let secondNum = document.querySelector("#second-num").value;
+      let operator = document.querySelector("#operator").value;
       output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
     });
 
-    let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
-    const TIMER_LABEL = 'MyDemoTimer';
+    let errorBtns = Array.from(document.querySelectorAll("#error-btns > button"));
+    const TIMER_LABEL = "MyDemoTimer";
 
     errorBtns.forEach(btn => {
       const text = btn.textContent.trim();
       switch (text) {
-        case 'Console Log':
-          btn.addEventListener('click', () => {
-            console.log('👋 This is a demo of console.log()', {
+        case "Console Log":
+          btn.addEventListener("click", () => {
+            console.log("👋 This is console.log()", {
               example: 42,
               nested: { a: 1, b: 2 }
             });
           });
           break;
 
-        case 'Console Error':
-          btn.addEventListener('click', () => {
-            console.error('⛔️ This is a demo of console.error()');
+        case "Console Error":
+          btn.addEventListener("click", () => {
+            console.error("⛔️ This is console.error()");
           });
           break;
 
-        case 'Console Count':
-          btn.addEventListener('click', () => {
-            console.count('Demo Count');
+        case "Console Count":
+          btn.addEventListener("click", () => {
+            console.count("Demo Count");
           });
           break;
 
-        case 'Console Warn':
-          btn.addEventListener('click', () => {
-            console.warn('⚠️ This is a demo of console.warn()');
+        case "Console Warn":
+          btn.addEventListener("click", () => {
+            console.warn("⚠️ This is console.warn()");
           });
           break;
 
-        case 'Console Assert':
-          btn.addEventListener('click', () => {
-            console.assert(2 + 2 === 5, '❌ Assertion failed: 2 + 2 is not 5');
+        case "Console Assert":
+          btn.addEventListener("click", () => {
+            console.assert(2 + 2 === 5, "❌ Assertion failed: 2 + 2 is not 5");
           });
           break;
 
-        case 'Console Clear':
-          btn.addEventListener('click', () => {
+        case "Console Clear":
+          btn.addEventListener("click", () => {
             console.clear();
-            console.log('🧹 Console has been cleared.');
+            console.log("🧹 Console has been cleared.");
           });
           break;
 
-        case 'Console Dir':
-          btn.addEventListener('click', () => {
+        case "Console Dir":
+          btn.addEventListener("click", () => {
             console.dir(document.body, { depth: 1, colors: true });
           });
           break;
 
-        case 'Console dirxml':
-          btn.addEventListener('click', () => {
+        case "Console dirxml":
+          btn.addEventListener("click", () => {
             console.dirxml(document.body);
           });
           break;
 
-        case 'Console Group Start':
-          btn.addEventListener('click', () => {
-            console.group('🔽 Demo Group Start');
-            console.log('  • Inside the group: item 1');
-            console.log('  • Inside the group: item 2');
-            console.log('  • Inside the group: item 3');
+        case "Console Group Start":
+          btn.addEventListener("click", () => {
+            console.group("🔽 Demo Group Start");
+            console.log("  • Inside the group: item 1");
+            console.log("  • Inside the group: item 2");
+            console.log("  • Inside the group: item 3");
           });
           break;
 
-        case 'Console Group End':
-          btn.addEventListener('click', () => {
+        case "Console Group End":
+          btn.addEventListener("click", () => {
             console.groupEnd();
-            console.log('▶️ Closed the demo group.');
+            console.log("▶️ Closed the demo group.");
           });
           break;
 
-        case 'Console Table':
-          btn.addEventListener('click', () => {
+        case "Console Table":
+          btn.addEventListener("click", () => {
             const people = [
-              { name: 'Alice', age: 23, occupation: 'Engineer' },
-              { name: 'Bob', age: 35, occupation: 'Designer' },
-              { name: 'Carol', age: 29, occupation: 'Teacher' }
+              { name: "Alice", age: 23, occupation: "Engineer" },
+              { name: "Bob", age: 35, occupation: "Designer" },
+              { name: "Carol", age: 29, occupation: "Teacher" }
             ];
             console.table(people);
           });
           break;
 
-        case 'Start Timer':
-          btn.addEventListener('click', () => {
+        case "Start Timer":
+          btn.addEventListener("click", () => {
             console.time(TIMER_LABEL);
             console.log(`⏱ Timer "${TIMER_LABEL}" started.`);
           });
           break;
 
-        case 'End Timer':
-          btn.addEventListener('click', () => {
+        case "End Timer":
+          btn.addEventListener("click", () => {
             console.timeEnd(TIMER_LABEL);
           });
           break;
 
-        case 'Console Trace':
-          btn.addEventListener('click', () => {
+        case "Console Trace":
+          btn.addEventListener("click", () => {
             function innerFunction() {
-              console.trace('📍 Demo trace() called here');
+              console.trace("📍 Demo trace() called here");
             }
             function outerFunction() {
               innerFunction();
@@ -216,16 +204,15 @@
           });
           break;
 
-        case 'Trigger a Global Error':
-          btn.addEventListener('click', () => {
-            // This ReferenceError is not caught locally, so it bubbles up to
-            // window.onerror and also gets reported to TrackJS automatically.
+        case "Trigger a Global Error":
+          btn.addEventListener("click", () => {
+            // Because this isn’t wrapped in try/catch, it’s “uncaught”—
+            // TrackJS (and our window.onerror) will see it.
             thisFunctionDoesNotExist();
           });
           break;
 
         default:
-          // No action for other labels
           break;
       }
     });
@@ -234,46 +221,33 @@
     // ─── STEP 3: TRY / CATCH / FINALLY ───────────────────────────────────────────────
     //
 
-    // Remove any old listener so we can install a new try/catch version
-    form.removeEventListener('submit', () => {});
-
-    form.addEventListener('submit', e => {
+    form.removeEventListener("submit", () => {});
+    form.addEventListener("submit", e => {
       e.preventDefault();
-      let output = document.querySelector('output');
-      let firstNum = document.querySelector('#first-num').value;
-      let secondNum = document.querySelector('#second-num').value;
-      let operator = document.querySelector('#operator').value;
+      let output = document.querySelector("output");
+      let firstNum = document.querySelector("#first-num").value;
+      let secondNum = document.querySelector("#second-num").value;
+      let operator = document.querySelector("#operator").value;
 
       try {
-        // 3a. Check for empty inputs
-        if (firstNum.trim() === '' || secondNum.trim() === '') {
-          throw new TypeError('Input fields cannot be empty.');
+        if (firstNum.trim() === "" || secondNum.trim() === "") {
+          throw new TypeError("Input fields cannot be empty.");
         }
-
-        // 3b. Convert to numbers
-        const num1 = Number(firstNum);
-        const num2 = Number(secondNum);
+        const num1 = Number(firstNum),
+          num2 = Number(secondNum);
         if (isNaN(num1) || isNaN(num2)) {
-          throw new TypeError('Both inputs must be valid numbers.');
+          throw new TypeError("Both inputs must be valid numbers.");
         }
-
-        // 3c. Check for division by zero
-        if (operator === '/' && num2 === 0) {
-          throw new RangeError('Cannot divide by zero.');
+        if (operator === "/" && num2 === 0) {
+          throw new RangeError("Cannot divide by zero.");
         }
-
-        // If checks pass, perform the calculation
         const result = eval(`${num1} ${operator} ${num2}`);
         output.innerHTML = result;
-
       } catch (err) {
-        // 3d. Log to console (and TrackJS will pick it up because it’s either
-        // a caught error or if re-thrown it will be uncaught and tracked).
-        console.error('🔴 Caught an error in Calculate:', err);
+        console.error("🔴 Caught an error in Calculate:", err);
         output.innerHTML = `Error: ${err.message}`;
       } finally {
-        // 3e. Always runs
-        console.log('🟢 Finally: Calculation attempt finished.');
+        console.log("🟢 Finally: Calculation attempt finished.");
       }
     });
 
@@ -284,81 +258,74 @@
     class CalculationError extends Error {
       constructor(message, code) {
         super(message);
-        this.name = 'CalculationError';
+        this.name = "CalculationError";
         this.code = code;
       }
     }
 
-    // Remove previous listener again
-    form.removeEventListener('submit', () => {});
-
-    form.addEventListener('submit', e => {
+    form.removeEventListener("submit", () => {});
+    form.addEventListener("submit", e => {
       e.preventDefault();
-      let output = document.querySelector('output');
-      let firstNum = document.querySelector('#first-num').value;
-      let secondNum = document.querySelector('#second-num').value;
-      let operator = document.querySelector('#operator').value;
+      let output = document.querySelector("output");
+      let firstNum = document.querySelector("#first-num").value;
+      let secondNum = document.querySelector("#second-num").value;
+      let operator = document.querySelector("#operator").value;
 
       try {
-        // Repeat the same validation from Step 3
-        if (firstNum.trim() === '' || secondNum.trim() === '') {
-          throw new TypeError('Input fields cannot be empty.');
+        if (firstNum.trim() === "" || secondNum.trim() === "") {
+          throw new TypeError("Input fields cannot be empty.");
         }
-        const num1 = Number(firstNum);
-        const num2 = Number(secondNum);
+        const num1 = Number(firstNum),
+          num2 = Number(secondNum);
         if (isNaN(num1) || isNaN(num2)) {
-          throw new TypeError('Both inputs must be valid numbers.');
+          throw new TypeError("Both inputs must be valid numbers.");
         }
-        if (operator === '/' && num2 === 0) {
-          throw new RangeError('Cannot divide by zero.');
+        if (operator === "/" && num2 === 0) {
+          throw new RangeError("Cannot divide by zero.");
         }
 
-        // 4c. Perform calculation
         const rawResult = eval(`${num1} ${operator} ${num2}`);
-
-        // If result is negative, throw our custom CalculationError
         if (rawResult < 0) {
           throw new CalculationError(
             `Result is negative (${rawResult}). This app only handles non-negative results.`,
-            'NEG_RESULT'
+            "NEG_RESULT"
           );
         }
-
-        // Otherwise, display it
         output.innerHTML = rawResult;
-
       } catch (err) {
         if (err instanceof CalculationError) {
           console.error(`🛑 [${err.name}:${err.code}] ${err.message}`);
           output.innerHTML = `CalcError: ${err.message}`;
         } else {
-          console.error('🔴 Caught an error in Calculate:', err);
+          console.error("🔴 Caught an error in Calculate:", err);
           output.innerHTML = `Error: ${err.message}`;
         }
       } finally {
-        console.log('🟢 Finally: Custom calculation attempt finished.');
+        console.log("🟢 Finally: Custom calculation attempt finished.");
       }
     });
 
     //
-    // ─── STEP 5: GLOBAL ERROR HANDLER & TRACKJS ─────────────────────────────────────
+    // ─── STEP 5: GLOBAL ERROR HANDLER & TrackJS CHAINING ───────────────────────────
     //
+    // Instead of “window.onerror = …” (which would overwrite TrackJS), we chain
+    // our handler behind whatever TrackJS already installed.
 
-    // Any uncaught exception on this page (for example, from the “Trigger a Global Error” button)
-    // will bubble here. TrackJS is already installed, so it will auto-capture uncaught errors as well.
+    const trackOnError = window.onerror; // <– This is TrackJS’s own handler, installed earlier
+
     window.onerror = function (message, source, lineno, colno, errorObj) {
-      console.warn('🌐 [GLOBAL ERROR HANDLER]');
-      console.warn(`Message: ${message}`);
-      console.warn(`Source: ${source} (line: ${lineno}, col: ${colno})`);
-      console.warn('Error object:', errorObj);
+      // First, pass error through to TrackJS’s original handler
+      if (typeof trackOnError === "function") {
+        trackOnError(message, source, lineno, colno, errorObj);
+      }
 
-      // If you want to send errors manually to TrackJS instead of letting it auto-capture,
-      // you could do something like:
-      // if (window.TrackJS) {
-      //   TrackJS.track(errorObj || new Error(message));
-      // }
+      // Then do your own custom logic
+      console.warn("🌐 [GLOBAL ERROR HANDLER]");
+      console.warn(`Message:   ${message}`);
+      console.warn(`Source:    ${source} (line: ${lineno}, ${colno})`);
+      console.warn("Error obj:", errorObj);
 
-      // Returning true prevents the browser’s default error popup.
+      // Returning true prevents the browser’s default “uncaught error” alert
       return true;
     };
   </script>
